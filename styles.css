@@ -1,0 +1,179 @@
+body {
+  padding: 0;
+  margin: 0;
+  font: normal 40px/50px Arial, sans-serif;
+  color: #999;
+  min-width: 300px;
+}
+header {
+  width: 100%;
+  height: 100vh;
+  float: left;
+  font-size: 3.1rem;
+  line-height: 1;
+  letter-spacing: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header p {
+  height: 60px;
+  float: left;
+  margin-right: 0.3em;
+}
+header b {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+}
+header span {
+  display: inline-block;
+  color: #e74c3c;
+  position: relative;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+  animation: move 10s;
+  animation-iteration-count: infinite;
+  animation-delay: 3s;
+}
+
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+#nav-overlay {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+#nav-overlay nav {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+  z-index: 90;
+  transition: top 350ms ease;
+}
+#nav-overlay nav li {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+#nav-overlay nav a,
+#nav-overlay nav a:visited {
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 15px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+#nav-overlay nav a:hover,
+#nav-overlay nav a:visited:hover,
+#nav-overlay nav a:focus,
+#nav-overlay nav a:visited:focus,
+#nav-overlay nav a:visited,
+#nav-overlay nav a:visited:visited {
+  text-decoration: underline;
+}
+#nav-overlay.open nav {
+  top: 0;
+}
+#nav-overlay:before,
+#nav-overlay:after {
+  content: "";
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: blue;
+  transition: transform 350ms, -webkit-transform 350ms, -o-transform 350ms;
+  background-image: url(https://dl.dropbox.com/s/5ug9619bpebuv6o/seaclouds.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+  background-position: center center;
+}
+#nav-overlay:before {
+  left: 0;
+  transform: skew(50deg) translateX(-200%);
+  clip: rect(auto 50vw auto auto);
+}
+@media (min-width: 500px) {
+  #nav-overlay:before {
+    transform: skew(50deg) translateX(-150%);
+  }
+}
+#nav-overlay.open:before {
+  transform: skew(0) translateX(0%);
+}
+#nav-overlay:after {
+  right: 0;
+  transform: skew(50deg) translateX(200%);
+  clip: rect(auto auto auto 50vw);
+}
+@media (min-width: 500px) {
+  #nav-overlay:after {
+    transform: skew(50deg) translateX(150%);
+  }
+}
+#nav-overlay.open:after {
+  transform: skew(0) translateX(0%);
+}
+.icon {
+  display: inline-block;
+  font: normal normal normal 14px/1 "Material-Design-Iconic-Font";
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon.icon-menu:before {
+  content: "\f136";
+  font-size: 3rem;
+}
+.screen-reader-text {
+  position: absolute;
+  left: -999999em;
+}
+.menu-trigger {
+  cursor: pointer;
+  position: fixed;
+  padding: 1rem;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  color: black;
+  transform: rotate(225deg);
+  transition: all 350ms ease;
+}
+.menu-trigger.open {
+  color: white;
+  transform: rotate(0deg);
+}
